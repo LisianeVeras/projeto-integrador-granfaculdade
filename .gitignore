@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.vite/
+
+# Banco de dados local
+*.db
+*.db-wal
+*.db-shm

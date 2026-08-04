@@ -1,0 +1,409 @@
+/* Estilos do sistema de gestão de estoque */
+
+:root {
+  --azul: #1d4ed8;
+  --azul-escuro: #1e3a8a;
+  --azul-claro: #eff6ff;
+  --vermelho: #b91c1c;
+  --vermelho-claro: #fef2f2;
+  --verde: #15803d;
+  --verde-claro: #f0fdf4;
+
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borda: #e5e7eb;
+  --fundo: #f8fafc;
+  --branco: #ffffff;
+
+  --raio: 8px;
+  --sombra: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------- Barra superior */
+
+.topo {
+  background: var(--azul-escuro);
+  color: var(--branco);
+  box-shadow: var(--sombra);
+}
+
+.topo__conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topo__marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topo__logo {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.topo__marca strong {
+  display: block;
+  font-size: 17px;
+}
+
+.topo__marca small {
+  color: #bfdbfe;
+  font-size: 12px;
+}
+
+.menu {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.menu__item {
+  color: #dbeafe;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--raio);
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menu__item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--branco);
+}
+
+.menu__item.ativo {
+  background: var(--branco);
+  color: var(--azul-escuro);
+}
+
+/* ------------------------------------------------------------- Estrutura */
+
+.conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.cabecalho-pagina {
+  margin-bottom: 18px;
+}
+
+.cabecalho-pagina h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.cabecalho-pagina__descricao {
+  margin: 4px 0 0;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cartao__titulo {
+  margin: 0 0 16px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  border-bottom: 1px solid var(--borda);
+  padding-bottom: 10px;
+}
+
+.rodape {
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 13px;
+  padding: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+/* ------------------------------------------------------------ Formulario */
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo--largo {
+  grid-column: 1 / -1;
+}
+
+.campo__rotulo {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campo__obrigatorio {
+  color: var(--vermelho);
+}
+
+.campo__controle {
+  font: inherit;
+  color: inherit;
+  padding: 9px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: var(--branco);
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.campo__controle:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.campo__controle--invalido {
+  border-color: var(--vermelho);
+  background: var(--vermelho-claro);
+}
+
+.campo__controle--invalido:focus {
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
+}
+
+textarea.campo__controle {
+  resize: vertical;
+  min-height: 62px;
+}
+
+.campo__erro {
+  color: var(--vermelho);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------- Botoes */
+
+.botao {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: var(--branco);
+  color: var(--texto);
+  border-color: #cbd5e1;
+  transition: filter 0.15s, background 0.15s;
+}
+
+.botao:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.botao--primario {
+  background: var(--azul);
+  color: var(--branco);
+  border-color: var(--azul);
+}
+
+.botao--neutro {
+  background: var(--branco);
+}
+
+.botao--perigo {
+  background: var(--branco);
+  color: var(--vermelho);
+  border-color: #fca5a5;
+}
+
+.botao--pequeno {
+  padding: 5px 11px;
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------- Alertas */
+
+.alerta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--raio);
+  border: 1px solid;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.alerta--sucesso {
+  background: var(--verde-claro);
+  border-color: #86efac;
+  color: var(--verde);
+}
+
+.alerta--erro {
+  background: var(--vermelho-claro);
+  border-color: #fca5a5;
+  color: var(--vermelho);
+}
+
+.alerta__fechar {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+/* --------------------------------------------------------------- Tabelas */
+
+.tabela-rolagem {
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela th,
+.tabela td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--borda);
+  vertical-align: top;
+}
+
+.tabela th {
+  background: var(--azul-claro);
+  color: var(--azul-escuro);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.tabela tbody tr:hover {
+  background: #f9fafb;
+}
+
+.tabela__secundario {
+  color: var(--texto-suave);
+  font-size: 12.5px;
+  margin-top: 2px;
+  max-width: 380px;
+}
+
+.tabela__acoes {
+  white-space: nowrap;
+  display: table-cell;
+}
+
+.tabela__acoes .botao + .botao {
+  margin-left: 6px;
+}
+
+.vazio {
+  color: var(--texto-suave);
+  text-align: center;
+  padding: 22px;
+  margin: 0;
+}
+
+/* ---------------------------------------------- Tela de Associacao */
+
+.detalhes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.detalhes__miniatura {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--raio);
+  border: 1px solid var(--borda);
+}
+
+.detalhes__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 0;
+  flex: 1;
+  min-width: 260px;
+}
+
+.detalhes__largo {
+  grid-column: 1 / -1;
+}
+
+.detalhes__lista dt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+.detalhes__lista dd {
+  margin: 3px 0 0;
+}
+
+.linha-associacao {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.linha-associacao .campo {
+  flex: 1;
+  min-width: 260px;
+}
