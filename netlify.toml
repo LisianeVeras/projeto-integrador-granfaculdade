@@ -1,0 +1,11 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+# Sem isso, atualizar a página em /produtos daria erro 404,
+# porque quem cuida das rotas é o React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

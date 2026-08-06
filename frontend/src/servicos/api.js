@@ -1,6 +1,7 @@
-// Todas as chamadas ao backend passam por aqui
+// Todas as chamadas ao backend passam por aqui.
+// Quando o site é publicado, o endereço da API vem da variável VITE_API_URL.
 
-const BASE = 'http://localhost:3001/api';
+const BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 // Erro com o status e os erros de cada campo que o backend devolveu
 export class ErroApi extends Error {
@@ -22,10 +23,7 @@ async function requisicao(rota, opcoes = {}) {
     });
   } catch {
     // Acontece quando o servidor está desligado
-    throw new ErroApi(
-      'Não foi possível falar com o servidor. Confira se o backend está rodando em http://localhost:3001.',
-      0
-    );
+    throw new ErroApi('Não foi possível falar com o servidor. Tente novamente.', 0);
   }
 
   const corpo = await resposta.json().catch(() => ({}));
